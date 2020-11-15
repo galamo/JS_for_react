@@ -1,0 +1,14 @@
+.carBackground {
+  background-color: grey;
+}
+
+.carColor {
+  color: red !important;
+}
+
+.card {
+  background-color: grey;
+  color: red !important;
+  border: 6px solid green;
+  padding: 30px;
+}
