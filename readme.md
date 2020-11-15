@@ -16,3 +16,10 @@ This is folder for course 20 from Haifa with very nice students.
 
 - create one array that union cars + cars2
 - we want one list of cars.
+
+# Ex2
+
+General: Add car year under the car image.
+- add year to partialCars
+- getCarYearSpan() this function will return <span>1970-01-01</span>
+- append the span to card object
