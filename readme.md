@@ -12,6 +12,13 @@ This is folder for course 20 from Haifa with very nice students.
 9. cd JS_for_react
 10. git pull
 
+
+# issue with git pull
+run the following command
+git reset head --hard
+
+
+
 # Ex1
 
 - create one array that union cars + cars2
