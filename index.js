@@ -1,11 +1,2 @@
-console.log("JS For react Works");
-console.log("JS For react Works");
-console.log("JS For react Works");
-console.log("JS For react Works");
-console.log("JS For react Works");
-console.log("JS For react Works");
-console.log("JS For react Works");
-console.log("JS For react Works");
-console.log("JS For react Works");
-console.log("JS For react Works");
-console.log("JS For react Works");
+const cars = [{ c1: "car 1" }];
+console.log(cars);
