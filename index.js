@@ -178,6 +178,8 @@ const cars = [
     Origin: "USA",
   },
 ];
+const container = document.getElementById("container");
+
 
 // for loops ?
 // for
@@ -210,9 +212,10 @@ const carsWithImages = cars.map((car, index) => {
 
 function getPartialCars(cars) {
   return cars.map((car) => {
-    return { model: car.Name, origin: car.Origin, image: car.image };
+    return { model: car.Name, origin: car.Origin, image: car.image, additionalInfo: { hp: car.Horsepower,  cylinders: car.Cylinders } };
   });
 }
+const result = getPartialCars(carsWithImages);
 
 function getCarsHeader(car) {
   const carHeader = document.createElement("h3");
@@ -228,14 +231,57 @@ function getCarImage(imageUrl) {
   img.width = 300;
   return img;
 }
+function getButton(text){
+  if(typeof text !== 'string') throw new Error("getButton wrong text value") 
+  const button = document.createElement("button")
+  button.className = "delete_button"
+  button.innerText = text
+  button.addEventListener("click", deleteAction)
+  return button;
+}
+function getButtonAdditionalInfo(text,car){
+  if(typeof text !== 'string') throw new Error("getButtonAdditionalInfo wrong text value") 
+  const button = document.createElement("button")
+  button.className = "more_info_button"
+  button.innerText = text
+  button.addEventListener("click", _drawAdditionalInfo)
+  return button;
+
+  function _drawAdditionalInfo(){
+    const addionalInfo = document.getElementById(`ai_${car.model}`);
+    const span = document.createElement("div")
+    span.innerText = car.additionalInfo.hp || "No HP for this CAR"
+    addionalInfo.append(span)
+  }
+}
+
+
+function deleteAction(){
+    const indexToDeleted = result.findIndex(car=>car.model === this.parentElement.id)
+    if(indexToDeleted === -1 ) return;
+    result.splice(indexToDeleted,1);
+    draw(result)
+}
+
+
+function getAddionalInfoContainer(car){
+  const aiDiv = document.createElement("div");
+  aiDiv.id = `ai_${car.model}`;
+  return aiDiv;
+}
 
 function getCarCard(car) {
   const card = document.createElement("div");
   const h3 = getCarsHeader(car);
   const carImage = getCarImage(car.image);
-  //   card.calssName = "carBackground carColor"; same as row 237
+  const deleteButton = getButton("delete",car.model)
+  const infoButton = getButtonAdditionalInfo("More Info",car )
+  const addionalInfoContainer = getAddionalInfoContainer(car);
+  card.id = car.model
+
+
   card.classList.add("card");
-  card.append(h3, carImage);
+  card.append(h3, carImage,deleteButton,infoButton,addionalInfoContainer);
 
   return card;
 }
@@ -247,8 +293,10 @@ function getCarsHeaders(cars) {
   return headers;
 }
 
-const result = getPartialCars(carsWithImages);
-const h3Array = getCarsHeaders(result);
-const container = document.getElementById("container");
-console.log(h3Array);
-container.append(...h3Array);
+function draw(res){
+  container.innerHTML = "";
+  const cards = getCarsHeaders(res);
+  container.append(...cards);
+}
+draw(result)
+

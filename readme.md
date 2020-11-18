@@ -12,12 +12,10 @@ This is folder for course 20 from Haifa with very nice students.
 9. cd JS_for_react
 10. git pull
 
-
 # issue with git pull
+
 run the following command
 git reset head --hard
-
-
 
 # Ex1
 
@@ -27,6 +25,11 @@ git reset head --hard
 # Ex2
 
 General: Add car year under the car image.
+
 - add year to partialCars
 - getCarYearSpan() this function will return <span>1970-01-01</span>
 - append the span to card object
+
+# Ex3
+
+General: Add Acceleration to additional info.

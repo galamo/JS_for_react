@@ -12,3 +12,13 @@
   border: 6px solid green;
   padding: 30px;
 }
+
+.more_info_button {
+  color: red;
+  background-color: blue;
+}
+
+.delete_button {
+  color: black;
+  background-color: red;
+}
