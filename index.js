@@ -212,7 +212,8 @@ const carsWithImages = cars.map((car, index) => {
 
 function getPartialCars(cars) {
   return cars.map((car) => {
-    return { model: car.Name, origin: car.Origin, image: car.image, additionalInfo: { hp: car.Horsepower,  cylinders: car.Cylinders } };
+    return { model: car.Name, origin: car.Origin, image: car.image,
+       additionalInfo: { hp: car.Horsepower,  cylinders: car.Cylinders } };
   });
 }
 const result = getPartialCars(carsWithImages);
@@ -249,9 +250,17 @@ function getButtonAdditionalInfo(text,car){
 
   function _drawAdditionalInfo(){
     const addionalInfo = document.getElementById(`ai_${car.model}`);
-    const span = document.createElement("div")
-    span.innerText = car.additionalInfo.hp || "No HP for this CAR"
-    addionalInfo.append(span)
+
+
+     
+    // const divHP = document.createElement("div")
+    // divHP.innerText = car.additionalInfo.hp || "No HP for this CAR"
+
+    // const divCylinder = document.createElement("div")
+    // divCylinder.innerText = car.additionalInfo.cylinders || "No cylinders for this CAR"
+
+
+    addionalInfo.append()
   }
 }
 
@@ -295,8 +304,8 @@ function getCarsHeaders(cars) {
 
 function draw(res){
   container.innerHTML = "";
-  const cards = getCarsHeaders(res);
-  container.append(...cards);
+  const cardsDOM = getCarsHeaders(res);
+  container.append(...cardsDOM);
 }
 draw(result)
 
